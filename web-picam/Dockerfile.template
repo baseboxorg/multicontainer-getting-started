@@ -95,11 +95,14 @@ RUN /RPi_Cam_Web_Interface/install.sh
 RUN cp /RPi_Cam_Web_Interface/bin/raspimjpeg /opt/vc/bin/ && \
     chmod 755 /opt/vc/bin/raspimjpeg
 
-# Start camera interface
-RUN cd /RPi_Cam_Web_Interface && ./start.sh
-
 COPY . /usr/src/app
 #WORKDIR /usr/src/app
+
+# Start camera interface
+RUN service apache2 restart && \
+  /RPi_Cam_Web_Interface/start.sh
+
+
 
 #ENV INITSYSTEM on
 
