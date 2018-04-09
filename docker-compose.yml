@@ -1,4 +1,4 @@
-version: '2.0'
+version: '2'
 services:
   haproxy:
     build:
@@ -6,30 +6,14 @@ services:
     depends_on:
       - web-picam
     environment:
-      APACHE_1_IP: 192.168.0.11
       APACHE_EXPOSED_PORT: '80'
     expose:
     - 80
-    networks:
-      public_net:
-        ipv4_address: 192.168.0.33
     ports:
-    - 80:80/tcp
-
+    - '80:80'
   web-picam:
     build:
       context: ./web-picam
     container_name: voohaproxy_picam
     expose:
     - '80'
-    networks:
-      public_net:
-        ipv4_address: 192.168.0.11
-
-networks:
-  public_net:
-    driver: bridge
-    ipam:
-      config:
-      - subnet: 192.168.0.0/24
-      driver: default
