@@ -98,7 +98,7 @@ RUN cp /RPi_Cam_Web_Interface/bin/raspimjpeg /opt/vc/bin/ && \
 
 COPY entrypoint.sh /RPi_Cam_Web_Interface/entrypoint.sh
 
-RUN chmod u+x entrypoint.sh
+RUN chmod u+x /RPi_Cam_Web_Interface/entrypoint.sh
 
 COPY . ./
 
