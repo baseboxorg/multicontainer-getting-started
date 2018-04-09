@@ -2,7 +2,7 @@ version: '2.0'
 services:
   haproxy:
     build:
-      context: /Users/voosierra/Dev/code/voo-haproxy/haproxy
+      context: ./haproxy
     depends_on:
       - web-picam
     environment:
@@ -18,7 +18,7 @@ services:
 
   web-picam:
     build:
-      context: /Users/voosierra/Dev/code/voo-haproxy/web-picam
+      context: ./web-picam
     container_name: voohaproxy_picam
     expose:
     - '80'
