@@ -13,6 +13,8 @@ services:
   frontend:
     build:
       context: ./web-picam
+    devices:
+      - "/dev/vchiq"
     container_name: voohaproxy_frontend
     expose:
       - '80'
