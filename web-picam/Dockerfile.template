@@ -96,11 +96,11 @@ RUN cp /RPi_Cam_Web_Interface/bin/raspimjpeg /opt/vc/bin/ && \
     chmod 755 /opt/vc/bin/raspimjpeg
 
 COPY . /usr/src/app
-#WORKDIR /usr/src/app
+WORKDIR /RPi_Cam_Web_Interface
 
 # Start camera interface
-RUN service apache2 restart && \
-  /RPi_Cam_Web_Interface/start.sh
+#RUN service apache2 restart && \
+#  /RPi_Cam_Web_Interface/start.sh
 
 
 
