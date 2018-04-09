@@ -95,29 +95,13 @@ RUN /RPi_Cam_Web_Interface/install.sh
 RUN cp /RPi_Cam_Web_Interface/bin/raspimjpeg /opt/vc/bin/ && \
     chmod 755 /opt/vc/bin/raspimjpeg
 
-COPY . /usr/src/app
-WORKDIR /RPi_Cam_Web_Interface
 
-# Start camera interface
-#RUN service apache2 restart && \
-#  /RPi_Cam_Web_Interface/start.sh
+COPY entrypoint.sh /RPi_Cam_Web_Interface/entrypoint.sh
 
+RUN chmod u+x entrypoint.sh
 
-
-#ENV INITSYSTEM on
+COPY . ./
 
 
-
-#ENTRYPOINT ["rpi-cam-web"]
-
-# RPi Cam Web Interface listens on port 80
-
-
-#COPY entrypoint.sh /RPi_Cam_Web_Interface/entrypoint.sh
-#RUN chmod u+x entrypoint.sh
-
-#RUN [ "cross-build-end" ]
-
-#EXPOSE 80
 # Needs to be run with --device /dev/vchiq for access to the camera device
-#ENTRYPOINT ["/RPi_Cam_Web_Interface/entrypoint.sh", "-D", "FOREGROUND"]
+ENTRYPOINT ["/RPi_Cam_Web_Interface/entrypoint.sh", "-D", "FOREGROUND"]

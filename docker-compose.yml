@@ -1,19 +1,24 @@
 version: '2'
 services:
-  haproxy:
+  proxy:
     build:
       context: ./haproxy
     depends_on:
       - web-picam
-    environment:
-      APACHE_EXPOSED_PORT: '80'
+      - data
     expose:
-    - 80
+      - '80'
     ports:
-    - '80:80'
-  web-picam:
+      - '80:80'
+  frontend:
     build:
       context: ./web-picam
-    container_name: voohaproxy_picam
+    container_name: voohaproxy_frontend
     expose:
-    - '80'
+      - '80'
+  data:
+    build:
+      context: ./data
+    container_name: voohaproxy_data
+    expose:
+      - "8080"
