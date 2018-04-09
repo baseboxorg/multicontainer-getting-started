@@ -4,7 +4,7 @@ services:
     build:
       context: ./haproxy
     depends_on:
-      - web-picam
+      - frontend
       - data
     expose:
       - '80'
