@@ -4,7 +4,7 @@ services:
     build:
       context: /Users/voosierra/Dev/code/voo-haproxy/haproxy
     depends_on:
-      - frontend
+      - web-picam
     environment:
       APACHE_1_IP: 192.168.43.76
       APACHE_EXPOSED_PORT: '80'
