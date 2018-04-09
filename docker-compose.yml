@@ -1,7 +1,7 @@
-version: '2.1'
+version: '2'
 services:
   web-picam:
-    build: ./services/web-picam/
+    build: ./services/web-picam
     container_name: apache-web-picam
     expose:
     - '80'
@@ -9,7 +9,7 @@ services:
       public_net:
         ipv4_address: 192.168.0.11
   haproxy:
-    build: ./services/haproxy/
+    build: ./services/haproxy
     environment:
       APACHE_1_IP: 192.168.0.11
       APACHE_EXPOSED_PORT: '80'
