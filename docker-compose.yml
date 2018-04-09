@@ -1,26 +1,25 @@
 version: '2'
 services:
-  web-picam:
-    build: ./services/web-picam
-    container_name: apache-web-picam
-    expose:
-    - '80'
-    networks:
-      public_net:
-        ipv4_address: 192.168.0.11
   haproxy:
     build: ./services/haproxy
     environment:
       APACHE_1_IP: 192.168.0.11
       APACHE_EXPOSED_PORT: '80'
     expose:
-    - 80
+      - 80
     networks:
       public_net:
         ipv4_address: 192.168.0.33
     ports:
-    - 80:80/tcp
-
+      - 80:80/tcp
+  web-picam:
+    build: ./services/web-picam
+    container_name: apache-web-picam
+    expose:
+      - '80'
+    networks:
+      public_net:
+        ipv4_address: 192.168.0.11
 networks:
   public_net:
     driver: bridge
